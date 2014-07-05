@@ -5,6 +5,7 @@ class TagsController < ApplicationController
   end
 
   def create
+    @tags = Tag.top_ten
     @tag = Tag.hashtag(tag_params)
 
     if @tag.save
