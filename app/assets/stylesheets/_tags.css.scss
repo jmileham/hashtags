@@ -9,12 +9,14 @@
 
     label {
         float: left;
-        width: 1%;
+        width: 2%;
+        padding: 5px;
         text-align: right;
     }
     input[type=text] {
         float:left;
-        width: 99%
+        width: 98%;
+        padding: 5px;
     }
     input[type=submit] {
         width: 100%;
