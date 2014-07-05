@@ -1,8 +1,10 @@
-<ul>
-<%= render @tags %>
-</ul>
+<div class="tags">
+    <ul>
+    <%= render @tags %>
+    </ul>
 
-<%= simple_form_for @tag do |f| %>
-    <%= f.input :content, label: '#' %>
-    <%= f.submit "hash" %>
-<% end %>
+    <%= simple_form_for @tag do |f| %>
+        <%= f.input :content, label: '#' %>
+        <%= f.submit "hash" %>
+    <% end %>
+</div>

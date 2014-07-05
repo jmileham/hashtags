@@ -1,0 +1,22 @@
+.tags {
+    li {
+        display: block;
+        background-color: blue;
+        font-size: 20px;
+        color: yellow;
+        padding: 20px;
+    }
+
+    label {
+        float: left;
+        width: 1%;
+        text-align: right;
+    }
+    input[type=text] {
+        float:left;
+        width: 99%
+    }
+    input[type=submit] {
+        width: 100%;
+    }
+}
