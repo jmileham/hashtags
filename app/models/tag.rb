@@ -1,5 +1,7 @@
 class Tag < ActiveRecord::Base
 
+  validates :content, format: { with: %r{\A[A-z0-9]+\z}, message: "must be alphanumeric" }
+
   def self.top_ten
     Tag.all.order(:votes).limit(10).reverse_order
   end
