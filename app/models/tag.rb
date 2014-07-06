@@ -6,7 +6,7 @@ class Tag < ActiveRecord::Base
 
   def self.hashtag(tag_params)
     content = tag_params[:content]
-    existing = Tag.find_by content: content
+    existing = Tag.find_by content: content.downcase
 
     if existing.present?
       existing.votes += 1
@@ -17,4 +17,15 @@ class Tag < ActiveRecord::Base
       tag
     end
   end
+
+  validates :content, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: '' }
+  before_create :hashify
+
+
+  private 
+  def hashify
+    self.content = content.downcase
+  end
+
+
 end
