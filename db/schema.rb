@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140705142537) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "tags", force: true do |t|
     t.string   "content"
     t.integer  "votes"

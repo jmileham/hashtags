@@ -4,7 +4,7 @@
     </ul>
 
     <%= simple_form_for @tag do |f| %>
-        <%= f.input :content, label: '#' %>
+        <%= f.input :content, label: '#', autofocus: true %>
         <%= f.submit "hash" %>
     <% end %>
 </div>
