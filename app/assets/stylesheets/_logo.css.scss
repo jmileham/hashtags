@@ -1,0 +1,30 @@
+.logo {
+    overflow: hidden;
+    white-space: nowrap;
+    span{
+        font-size: 130px;
+        font-weight: bold;
+    }
+
+    .red {
+        color: $red;
+    }
+
+    .yellow {
+        color: $yellow;
+    }
+
+    .green {
+        color: $green;
+    }
+
+    .blue {
+        color: $blue;
+    }
+
+    .purple {
+        color: $purple;
+    }
+
+
+}
