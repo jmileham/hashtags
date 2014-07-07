@@ -1,12 +1,14 @@
 .tags {
+  $font-size: 20px;
+
   margin-bottom: 20px;
 
   form {
-    padding: 10px 0;
+    padding: 10px;
   }
   li {
     display: block;
-    font-size: 20px;
+    font-size: $font-size;
     padding: 20px;
     border-bottom: 2px solid $purple;
   }
@@ -17,13 +19,15 @@
 
   label {
     float: left;
-    width: 2%;
-    padding: 5px;
+    width: 3%;
+    font-size: $font-size;
+    padding: 7px 2px;
     text-align: right;
   }
   input[type=text] {
+    font-size: $font-size;
     float:left;
-    width: 98%;
+    width: 97%;
     padding: 5px;
   }
   input[type=submit] {
@@ -32,6 +36,9 @@
     text-transform: uppercase;
     color: $purple;
     background-color: $green;
+    &:hover {
+      background-color: darken($green, 10%);
+    }
   }
 
   .field_with_errors input {
@@ -45,19 +52,19 @@
   @media only screen and (max-width: 767px) {
     /* phones */
     li {
-      font-size: 40px;
+      font-size: $font-size * 2;
     }
 
     label {
-      font-size: 60px;
+      font-size: $font-size * 2;
       width: 10%;
     }
     input[type=text] {
-      font-size: 40px;
+      font-size: $font-size * 2;
       width: 90%;
     }
     input[type=submit] {
-      font-size: 40px;
+      font-size: $font-size * 2;
     }
   }
 
