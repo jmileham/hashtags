@@ -23,9 +23,17 @@
     }
     input[type=submit] {
         width: 100%;
+        margin-top: 10px;
+        text-transform: uppercase;
+        color: $purple;
+        background-color: $green;
     }
 
     .field_with_errors input {
         outline: 1px solid red;
+    }
+
+    form {
+        padding: 10px 0
     }
 }

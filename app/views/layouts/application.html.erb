@@ -8,7 +8,7 @@
 </head>
 <body>
 <%= render partial: 'layouts/logo' %>
-<%= yield %>
+<%= render partial: "shared/flash_messages", flash: flash %> <%= yield %>
 
 </body>
 </html>

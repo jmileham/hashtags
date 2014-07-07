@@ -9,8 +9,10 @@ class TagsController < ApplicationController
     @tag = Tag.hashtag(tag_params)
 
     if @tag.save
+      flash.delete(:error)
       redirect_to tags_path
     else
+      flash[:error] = "Illegal hash!!"
       render 'index'
     end
   end

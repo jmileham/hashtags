@@ -3,8 +3,5 @@
     <%= render @tags %>
     </ul>
 
-    <%= simple_form_for @tag do |f| %>
-        <%= f.input :content, label: '#', autofocus: true %>
-        <%= f.submit "hash" %>
-    <% end %>
+    <%= render 'form' %>
 </div>
