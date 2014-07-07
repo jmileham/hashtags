@@ -9,7 +9,7 @@ class TagsController < ApplicationController
     parent = Tag
     parent = parent.where(content: tag_params[:parent_content]) unless tag_params[:parent_content].blank?
     @tags = parent.top_ten
-    @tag = Tag.where(content: tag_params[:content]).first_or_initialize(tag_params)
+    @tag = Tag.where(content: tag_params[:content]).first_or_initialize
     @tag.parent_content = tag_params[:parent_content]
     @tag.votes += 1
     if @tag.save
