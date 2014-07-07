@@ -1,39 +1,74 @@
 .tags {
-    li {
-        display: block;
-        font-size: 20px;
-        padding: 20px;
-        border-bottom: 2px solid $purple;
-    }
+  $font-size: 20px;
 
-    li:first-child {
-        border-top: 2px solid $purple;
+  margin-bottom: 20px;
+
+  form {
+    padding: 10px;
+  }
+  li {
+    display: block;
+    font-size: $font-size;
+    padding: 20px;
+    border-bottom: 2px solid $purple;
+  }
+
+  li:first-child {
+    border-top: 2px solid $purple;
+  }
+
+  label {
+    float: left;
+    width: 3%;
+    font-size: $font-size;
+    padding: 7px 2px;
+    text-align: right;
+  }
+  input[type=text] {
+    font-size: $font-size;
+    float:left;
+    width: 97%;
+    padding: 5px;
+  }
+  input[type=submit] {
+    width: 100%;
+    margin-top: 10px;
+    text-transform: uppercase;
+    color: $purple;
+    background-color: $green;
+    &:hover {
+      background-color: darken($green, 10%);
+    }
+  }
+
+  .field_with_errors input {
+    outline: 1px solid red;
+  }
+
+  @media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+  }
+
+  @media only screen and (max-width: 767px) {
+    /* phones */
+    li {
+      font-size: $font-size * 2;
     }
 
     label {
-        float: left;
-        width: 2%;
-        padding: 5px;
-        text-align: right;
+      font-size: $font-size * 2;
+      width: 10%;
     }
     input[type=text] {
-        float:left;
-        width: 98%;
-        padding: 5px;
+      font-size: $font-size * 2;
+      width: 90%;
     }
     input[type=submit] {
-        width: 100%;
-        margin-top: 10px;
-        text-transform: uppercase;
-        color: $purple;
-        background-color: $green;
+      font-size: $font-size * 2;
     }
+  }
 
-    .field_with_errors input {
-        outline: 1px solid red;
-    }
-
-    form {
-        padding: 10px 0
-    }
+  @media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* portrait phones */
+  }
 }
