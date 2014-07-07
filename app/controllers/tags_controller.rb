@@ -9,10 +9,10 @@ class TagsController < ApplicationController
     parent = Tag
     parent = parent.where(content: tag_params[:parent_content]) unless tag_params[:parent_content].blank?
     @tags = parent.top_ten
-    @tag = Tag.new(tag_params)
+    @tag = Tag.where(content: tag_params[:content]).first_or_initialize(tag_params)
+    @tag.votes += 1
     if @tag.save
-      url_parts = [@tag.parent_content, @tag.content].reject(&:blank?)
-      redirect_to "/" + url_parts.join("/")
+      redirect_to "/#{@tag.parent_content}"
     else
       render 'index'
     end
