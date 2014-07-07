@@ -1,22 +1,46 @@
 class Tag < ActiveRecord::Base
 
-  validates :content, format: { with: %r{\A[A-z0-9]+\z}, message: "must be alphanumeric" }
+  has_many :parent_mappings, class_name: "Mapping", foreign_key: :child_id
+  has_many :child_mappings, class_name: "Mapping", foreign_key: :parent_id
+
+  attr_accessor :parent_content
+
+  after_initialize :set_votes
+  after_save :persist_parent
+
+  validates :content, uniqueness: true, format: { with: %r{\A[A-z0-9]+\z}, message: "must be alphanumeric" }
 
   def self.top_ten
-    Tag.all.order(:votes).limit(10).reverse_order
+    Tag.all.order(votes: :desc).limit(10)
   end
 
-  def self.hashtag(tag_params)
-    content = tag_params[:content]
-    existing = Tag.find_by content: content.downcase
+  def self.hashtag(content)
+    Tag.where(content: content).first_or_initialize.tap do |tag|
+      tag.votes += 1
+    end
+  end
 
-    if existing.present?
-      existing.votes += 1
-      existing
-    else
-      tag = Tag.new(tag_params)
-      tag.votes = 1
-      tag
+  def top_ten
+    child_mappings.includes(:child).order(votes: :desc).limit(10).map(&:child)
+  end
+
+  def parent_content=(content)
+    @parent_content = content
+  end
+
+  private
+
+  def set_votes
+    self.votes ||= 0
+  end
+
+  def persist_parent
+    unless parent_content.blank?
+      parent = Tag.where(content: parent_content).first_or_create!
+      mapping = parent_mappings.where(parent_id: parent.id).first_or_create do |mapping|
+        mapping.votes ||= 0
+        mapping.votes += 1
+      end
     end
   end
 
