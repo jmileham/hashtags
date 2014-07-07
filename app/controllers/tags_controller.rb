@@ -10,6 +10,7 @@ class TagsController < ApplicationController
     parent = parent.where(content: tag_params[:parent_content]) unless tag_params[:parent_content].blank?
     @tags = parent.top_ten
     @tag = Tag.where(content: tag_params[:content]).first_or_initialize(tag_params)
+    @tag.parent_content = tag_params[:parent_content]
     @tag.votes += 1
     if @tag.save
       redirect_to "/#{@tag.parent_content}"

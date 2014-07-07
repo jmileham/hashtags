@@ -6,9 +6,10 @@ class Tag < ActiveRecord::Base
   attr_accessor :parent_content
 
   after_initialize :set_votes
+  before_validation :hashify
   after_save :persist_parent
 
-  validates :content, uniqueness: true, format: { with: %r{\A[A-z0-9]+\z}, message: "must be alphanumeric" }
+  validates :content, presence: true, uniqueness: true, format: { with: %r{\A[a-z]+\z}, message: "must be alphabetical" }
 
   def self.top_ten
     Tag.all.order(votes: :desc).limit(10)
@@ -22,10 +23,6 @@ class Tag < ActiveRecord::Base
 
   def top_ten
     child_mappings.includes(:child).order(votes: :desc).limit(10).map(&:child)
-  end
-
-  def parent_content=(content)
-    @parent_content = content
   end
 
   private
@@ -44,11 +41,6 @@ class Tag < ActiveRecord::Base
     end
   end
 
-  validates :content, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: '' }
-  before_create :hashify
-
-
-  private 
   def hashify
     self.content = content.downcase
   end
