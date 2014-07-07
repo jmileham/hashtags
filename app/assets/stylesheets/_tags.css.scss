@@ -1,39 +1,67 @@
 .tags {
-    li {
-        display: block;
-        font-size: 20px;
-        padding: 20px;
-        border-bottom: 2px solid $purple;
-    }
+  margin-bottom: 20px;
 
-    li:first-child {
-        border-top: 2px solid $purple;
+  form {
+    padding: 10px 0;
+  }
+  li {
+    display: block;
+    font-size: 20px;
+    padding: 20px;
+    border-bottom: 2px solid $purple;
+  }
+
+  li:first-child {
+    border-top: 2px solid $purple;
+  }
+
+  label {
+    float: left;
+    width: 2%;
+    padding: 5px;
+    text-align: right;
+  }
+  input[type=text] {
+    float:left;
+    width: 98%;
+    padding: 5px;
+  }
+  input[type=submit] {
+    width: 100%;
+    margin-top: 10px;
+    text-transform: uppercase;
+    color: $purple;
+    background-color: $green;
+  }
+
+  .field_with_errors input {
+    outline: 1px solid red;
+  }
+
+  @media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+  }
+
+  @media only screen and (max-width: 767px) {
+    /* phones */
+    li {
+      font-size: 40px;
     }
 
     label {
-        float: left;
-        width: 2%;
-        padding: 5px;
-        text-align: right;
+      font-size: 60px;
+      width: 10%;
     }
     input[type=text] {
-        float:left;
-        width: 98%;
-        padding: 5px;
+      font-size: 40px;
+      width: 90%;
     }
     input[type=submit] {
-        width: 100%;
-        margin-top: 10px;
-        text-transform: uppercase;
-        color: $purple;
-        background-color: $green;
+      font-size: 40px;
     }
+  }
 
-    .field_with_errors input {
-        outline: 1px solid red;
-    }
-
-    form {
-        padding: 10px 0
-    }
+  @media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* portrait phones */
+  }
 }
